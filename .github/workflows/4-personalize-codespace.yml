@@ -7,8 +7,6 @@ name: Step 4, Personalize your Codespace
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
 
 
-      name: CI Workflow
-
 on:
   push:
     branches:
