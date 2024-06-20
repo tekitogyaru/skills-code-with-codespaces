@@ -5,13 +5,28 @@ name: Step 4, Personalize your Codespace
 
 # This will run every time we push to main#setup.sh.
 # Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows
+
+
+      name: CI Workflow
+
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-    paths:
-      - "setup.sh"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up environment
+        run: sudo apt-get update && sudo apt-get install -y sl
+      - name: Run setup.sh
+        run: |
+          chmod +x setup.sh
+          ./setup.sh
+
 
 # Reference: https://docs.github.com/en/actions/security-guides/automatic-token-authentication
 permissions:
